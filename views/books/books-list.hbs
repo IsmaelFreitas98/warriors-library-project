@@ -1,0 +1,18 @@
+<h1>Books in Our DB</h1>
+
+<form action="/books" method="get">
+    <label>Min Rating:
+        <input type="number" min="1" max="10" name="minRating" placeholder="1-10">
+    </label>
+
+    <input type="submit" value="Search!">
+</form>
+
+{{#each booksArr}}
+    <div>
+        <h2>{{this.title}}</h2>
+        <h3>{{this.author}}</h3>
+        <h3>{{this.rating}}</h3>
+        <a href="/books/{{this._id}}">More Information</a>
+    </div>
+{{/each}}
