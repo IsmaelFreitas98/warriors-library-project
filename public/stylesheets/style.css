@@ -10,3 +10,13 @@ a {
 h1 {
   color: 15px;
 }
+
+nav {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  margin: 0 2rem;
+}
