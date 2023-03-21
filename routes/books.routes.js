@@ -28,7 +28,13 @@ router.get("/books", (req, res, next) => {
 
 
 router.get("/books/create", (req, res, next) => {
-  res.render("books/book-create")
+
+  Author.find()
+    .then(authorsArr => {
+      res.render("books/book-create", {authors: authorsArr});
+    })
+    .catch();
+
 });
 
 //POST
@@ -52,6 +58,7 @@ router.post("/books", (req, res) => {
 router.get("/books/:bookId/edit", (req, res, next) => {
   
   Book.findById(req.params.bookId)
+    .populate("author")
     .then(bookToEdit => {
       res.render("books/book-edit", {book: bookToEdit});
     })
