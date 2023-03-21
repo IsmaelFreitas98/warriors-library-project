@@ -57,13 +57,21 @@ router.post("/books", (req, res) => {
 
 router.get("/books/:bookId/edit", (req, res, next) => {
   
+  let bookDetails;
+  
   Book.findById(req.params.bookId)
-    .populate("author")
     .then(bookToEdit => {
-      res.render("books/book-edit", {book: bookToEdit});
+      bookDetails = bookToEdit;
+
+      return Author.find();
     })
-    .catch(error => next(error));
-});
+    .then(authorsArr => {
+      res.render("books/book-edit", {book: bookDetails, authors: authorsArr});
+    })
+    .catch(error => next(error)); 
+      
+})
+
 
 //POST for edit
 router.post("/books/:bookId/edit", (req, res, next) => {
