@@ -14,5 +14,11 @@
         <h3>{{this.author}}</h3>
         <h3>{{this.rating}}</h3>
         <a href="/books/{{this._id}}">More Information</a>
+        <a href="/books/{{this._id}}/edit">Edit</a>
+        
+
+        <form action="/books/{{this._id}}/delete" method="POST">
+            <button>Delete</button>
+        </form>
     </div>
 {{/each}}
