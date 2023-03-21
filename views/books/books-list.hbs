@@ -11,7 +11,7 @@
 {{#each booksArr}}
     <div>
         <h2>{{this.title}}</h2>
-        <h3>{{this.author}}</h3>
+        <h3>{{this.author.name}}</h3>
         <h3>{{this.rating}}</h3>
         <a href="/books/{{this._id}}">More Information</a>
         <a href="/books/{{this._id}}/edit">Edit</a>
